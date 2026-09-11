@@ -6,10 +6,16 @@
 
     <title>Sortivo - Sort. Match. Win.</title>
 
-    <meta name="description"
-          content="Sortivo is a fun and addictive sorting puzzle game. Sort, match and master every level.">
+    <meta
+        name="description"
+        content="Sortivo is a fun and addictive sorting puzzle game. Sort, match, and master every level."
+    >
 
     <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
 
         * {
             margin: 0;
@@ -22,34 +28,65 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f9fc;
-            color: #172033;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: #182033;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(54, 116, 255, 0.12),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 30%,
+                    rgba(0, 220, 170, 0.10),
+                    transparent 30%
+                ),
+                #f7faff;
+
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* =========================
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
            HEADER
-        ========================= */
+        ========================================================= */
 
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
+            z-index: 100;
 
-            background: rgba(255,255,255,0.94);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.94);
 
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(20, 40, 80, 0.08);
         }
 
         .nav {
-            max-width: 1180px;
-            margin: auto;
-
-            padding: 18px 28px;
+            height: 76px;
 
             display: flex;
             align-items: center;
@@ -57,102 +94,117 @@
         }
 
         .logo {
-            font-size: 29px;
+            font-size: 30px;
             font-weight: 900;
             letter-spacing: -1px;
-            color: #2636d9;
+
+            color: #1264e8;
+        }
+
+        .logo span {
+            color: #79d900;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
-            list-style: none;
+            align-items: center;
+            gap: 34px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            color: #38445a;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #4b5568;
-            font-weight: 700;
-
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: #2636d9;
+            color: #1264e8;
         }
 
 
-        /* =========================
+        /* =========================================================
            HERO
-        ========================= */
+        ========================================================= */
 
         .hero {
-            min-height: 100vh;
+            min-height: 720px;
 
-            padding: 130px 28px 80px;
+            padding: 90px 0 100px;
 
             display: flex;
             align-items: center;
-
-            background:
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(98,110,255,0.20),
-                    transparent 32%
-                ),
-
-                radial-gradient(
-                    circle at 10% 80%,
-                    rgba(255,193,74,0.18),
-                    transparent 30%
-                ),
-
-                #f7f9fc;
         }
 
         .hero-container {
-            max-width: 1180px;
-            width: 100%;
-
-            margin: auto;
-
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
 
-            gap: 70px;
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(320px, 420px);
+
+            gap: 80px;
 
             align-items: center;
         }
 
+        .hero-text {
+            max-width: 620px;
+        }
 
-        /* HERO TEXT */
+        .eyebrow {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 999px;
+
+            background: #eaf2ff;
+            color: #1264e8;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            margin-bottom: 22px;
+        }
 
         .hero-text h1 {
-            font-size: clamp(52px, 7vw, 88px);
+            font-size: clamp(48px, 7vw, 78px);
 
-            line-height: 0.94;
+            line-height: 0.98;
 
-            letter-spacing: -5px;
+            letter-spacing: -4px;
 
             margin-bottom: 28px;
+
+            color: #182033;
         }
 
         .hero-text h1 span {
-            color: #2636d9;
+            color: #1264e8;
         }
 
         .hero-text p {
-            max-width: 530px;
-
             font-size: 20px;
 
-            color: #667085;
+            color: #647089;
 
-            margin-bottom: 35px;
+            max-width: 560px;
+
+            margin-bottom: 34px;
         }
 
+        .hero-buttons {
+            display: flex;
 
-        /* GOOGLE PLAY BUTTON */
+            align-items: center;
+
+            gap: 16px;
+
+            flex-wrap: wrap;
+        }
 
         .play-button {
             display: inline-flex;
@@ -160,116 +212,305 @@
             align-items: center;
             justify-content: center;
 
-            gap: 10px;
-
-            padding: 16px 25px;
+            padding: 15px 24px;
 
             border-radius: 14px;
 
-            background: #172033;
+            background: #182033;
 
             color: white;
-
-            text-decoration: none;
 
             font-weight: 800;
 
             box-shadow:
-                0 12px 25px rgba(23,32,51,0.18);
+                0 12px 25px rgba(24, 32, 51, 0.18);
 
-            transition: 0.25s;
+            transition: 0.25s ease;
         }
 
         .play-button:hover {
             transform: translateY(-3px);
 
             box-shadow:
-                0 18px 35px rgba(23,32,51,0.25);
+                0 17px 32px rgba(24, 32, 51, 0.24);
+        }
+
+        .secondary-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 22px;
+
+            border-radius: 14px;
+
+            border: 2px solid #dce5f5;
+
+            background: white;
+
+            color: #34415a;
+
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+        .secondary-button:hover {
+            border-color: #1264e8;
+            color: #1264e8;
         }
 
 
-        /* =========================
-           GAMEPLAY IMAGE
-        ========================= */
+        /* =========================================================
+           PHONE FRAME
+        ========================================================= */
 
         .game-preview {
             display: flex;
 
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
             position: relative;
         }
 
-        .gameplay-image {
+        .phone-frame {
+            width: 310px;
+
+            max-width: 82vw;
+
+            padding: 10px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #303747,
+                    #080b12
+                );
+
+            border: 3px solid #4b5568;
+
+            border-radius: 42px;
+
+            box-shadow:
+                0 35px 70px rgba(16, 28, 52, 0.28),
+                inset 0 0 0 2px #05070b;
+
+            position: relative;
+
+            transform: rotate(0deg);
+
+            transition: 0.3s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Side buttons */
+
+        .phone-frame::before {
+            content: "";
+
+            position: absolute;
+
+            left: -7px;
+            top: 105px;
+
+            width: 4px;
+            height: 52px;
+
+            border-radius: 4px;
+
+            background: #222936;
+
+            box-shadow:
+                0 68px 0 #222936;
+        }
+
+        .phone-frame::after {
+            content: "";
+
+            position: absolute;
+
+            right: -7px;
+            top: 145px;
+
+            width: 4px;
+            height: 82px;
+
+            border-radius: 4px;
+
+            background: #222936;
+        }
+
+        .phone-screen {
             width: 100%;
-            max-width: 250px;
+
+            overflow: hidden;
+
+            border-radius: 32px;
+
+            background: #000;
+
+            position: relative;
+        }
+
+        /* Dynamic island / camera */
+
+        .phone-screen::before {
+            content: "";
+
+            position: absolute;
+
+            z-index: 5;
+
+            top: 9px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 76px;
+            height: 21px;
+
+            border-radius: 20px;
+
+            background: #050505;
+
+            box-shadow:
+                inset 0 0 0 1px #151515;
+        }
+
+        .gameplay-image {
+            display: block;
+
+            width: 100%;
+
+            max-width: none;
 
             height: auto;
 
-            display: block;
+            margin: 0;
 
-            border-radius: 28px;
-
-            box-shadow:
-                0 30px 70px rgba(23,32,51,0.28);
-
-            transform: rotate(2deg);
-
-            transition: 0.35s;
-        }
-
-        .gameplay-image:hover {
-            transform:
-                rotate(0deg)
-                translateY(-6px);
-
-            box-shadow:
-                0 38px 80px rgba(23,32,51,0.32);
+            border-radius: 32px;
         }
 
 
-        /* =========================
-           SECTIONS
-        ========================= */
+        /* =========================================================
+           SECTION
+        ========================================================= */
 
         section {
-            padding: 105px 28px;
-        }
-
-        .section-container {
-            max-width: 1100px;
-            margin: auto;
+            padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
 
-            font-size: 44px;
-
-            letter-spacing: -1px;
-
-            margin-bottom: 15px;
+            margin-bottom: 55px;
         }
 
-        .section-subtitle {
-            text-align: center;
+        .section-title small {
+            display: block;
 
-            color: #667085;
+            color: #1264e8;
 
-            max-width: 650px;
+            font-weight: 800;
 
-            margin: 0 auto 55px;
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(34px, 5vw, 48px);
+
+            line-height: 1.1;
+
+            letter-spacing: -2px;
+
+            color: #182033;
+        }
+
+        .section-title p {
+            max-width: 620px;
+
+            margin: 18px auto 0;
+
+            color: #69758b;
+
+            font-size: 17px;
         }
 
 
-        /* =========================
-           FEATURES
-        ========================= */
+        /* =========================================================
+           HOW TO PLAY
+        ========================================================= */
 
-        .features {
+        #how-to-play {
             background: white;
         }
+
+        .steps {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+        .step {
+            text-align: center;
+
+            padding: 32px 24px;
+
+            border-radius: 22px;
+
+            background: #f7faff;
+
+            border: 1px solid #e6edf8;
+        }
+
+        .step-number {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #1264e8;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: 900;
+        }
+
+        .step h3 {
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #6c778c;
+        }
+
+
+        /* =========================================================
+           FEATURES
+        ========================================================= */
 
         .feature-grid {
             display: grid;
@@ -280,183 +521,215 @@
             gap: 25px;
         }
 
-        .feature-card {
-            padding: 36px 28px;
+        .feature {
+            padding: 30px;
 
             border-radius: 22px;
 
-            background: #f7f9fc;
+            background: white;
 
-            text-align: center;
-
-            border: 1px solid #e9edf5;
-
-            transition: 0.25s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
+            border: 1px solid #e4ebf7;
 
             box-shadow:
-                0 15px 35px rgba(23,32,51,0.08);
+                0 12px 35px rgba(25, 45, 80, 0.05);
         }
 
         .feature-icon {
-            font-size: 42px;
-
-            margin-bottom: 18px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 10px;
-
-            font-size: 21px;
-        }
-
-        .feature-card p {
-            color: #667085;
-        }
-
-
-        /* =========================
-           HOW TO PLAY
-        ========================= */
-
-        .steps {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 30px;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 58px;
-            height: 58px;
-
-            margin: 0 auto 18px;
-
-            border-radius: 50%;
-
-            background: #2636d9;
-
-            color: white;
+            width: 54px;
+            height: 54px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            font-size: 21px;
+            border-radius: 16px;
 
-            font-weight: 800;
+            background: #eaf2ff;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+
+            margin-bottom: 9px;
+        }
+
+        .feature p {
+            color: #6c778c;
+        }
+
+
+        /* =========================================================
+           GAMEPLAY
+        ========================================================= */
+
+        #gameplay {
+            background: white;
+        }
+
+        .screenshots {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+        }
+
+        .screenshots img {
+            width: 240px;
+
+            border-radius: 25px;
 
             box-shadow:
-                0 10px 20px rgba(38,54,217,0.20);
-        }
-
-        .step h3 {
-            margin-bottom: 8px;
-        }
-
-        .step p {
-            color: #667085;
+                0 20px 45px rgba(20, 40, 70, 0.18);
         }
 
 
-        /* =========================
+        /* =========================================================
            CTA
-        ========================= */
+        ========================================================= */
 
         .cta {
-            background: #2636d9;
+            padding: 90px 30px;
+
+            text-align: center;
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1264e8,
+                    #1547b8
+                );
 
             color: white;
 
-            text-align: center;
+            box-shadow:
+                0 30px 70px rgba(18, 100, 232, 0.20);
         }
 
         .cta h2 {
-            font-size: 46px;
+            font-size: clamp(34px, 5vw, 52px);
 
-            margin-bottom: 15px;
+            letter-spacing: -2px;
 
-            letter-spacing: -1px;
+            margin-bottom: 18px;
         }
 
         .cta p {
-            opacity: 0.88;
+            max-width: 600px;
 
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
+
+            color: rgba(255,255,255,0.82);
+
+            font-size: 17px;
         }
 
-        .cta-button {
-            display: inline-block;
+        .cta .play-button {
+            background: white;
 
-            padding: 16px 30px;
+            color: #182033;
 
-            border-radius: 14px;
+            box-shadow: none;
+        }
+
+
+        /* =========================================================
+           SUPPORT
+        ========================================================= */
+
+        #support {
+            background: #f7faff;
+        }
+
+        .support-box {
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            padding: 45px;
+
+            text-align: center;
 
             background: white;
 
-            color: #2636d9;
+            border-radius: 25px;
 
-            text-decoration: none;
-
-            font-weight: 800;
-
-            transition: 0.25s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
+            border: 1px solid #e4ebf7;
 
             box-shadow:
-                0 12px 25px rgba(0,0,0,0.15);
+                0 15px 45px rgba(25, 45, 80, 0.06);
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #111827;
-
-            color: #aeb6c5;
-
-            padding: 48px 24px;
-
-            text-align: center;
+        .support-box h2 {
+            margin-bottom: 12px;
         }
 
-        .footer-logo {
-            color: white;
+        .support-box p {
+            color: #68748a;
 
-            font-size: 26px;
-
-            font-weight: 900;
-
-            margin-bottom: 17px;
-        }
-
-        .footer-links {
             margin-bottom: 22px;
         }
 
-        .footer-links a {
-            color: #aeb6c5;
+        .support-email {
+            display: inline-block;
 
-            text-decoration: none;
+            font-weight: 800;
 
-            margin: 0 12px;
+            color: #1264e8;
+        }
 
-            transition: 0.2s;
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 40px 0;
+
+            background: #111827;
+
+            color: white;
+        }
+
+        .footer-inner {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+
+            color: #c8d0df;
+
+            font-size: 14px;
         }
 
         .footer-links a:hover {
@@ -464,36 +737,36 @@
         }
 
         .copyright {
-            font-size: 14px;
+            width: 100%;
+
+            padding-top: 25px;
+
+            margin-top: 10px;
+
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            color: #8994a8;
+
+            font-size: 13px;
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* =========================================================
+           TABLET
+        ========================================================= */
 
-        @media (max-width: 850px) {
-
-            .nav {
-                padding:
-                    16px 20px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding:
-                    120px 22px 70px;
-            }
+        @media (max-width: 900px) {
 
             .hero-container {
                 grid-template-columns: 1fr;
 
-                gap: 55px;
-
                 text-align: center;
+
+                gap: 55px;
+            }
+
+            .hero-text {
+                margin: 0 auto;
             }
 
             .hero-text p {
@@ -501,33 +774,48 @@
                 margin-right: auto;
             }
 
-            .gameplay-image {
-                max-width: 250px;
-
-                transform: rotate(0deg);
+            .hero-buttons {
+                justify-content: center;
             }
 
-            .feature-grid,
-            .steps {
+            .steps,
+            .feature-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 36px;
-            }
-
-            .cta h2 {
-                font-size: 36px;
-            }
         }
 
 
-        /* SMALL PHONES */
+        /* =========================================================
+           SMALL PHONES
+        ========================================================= */
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+
+            .nav {
+                height: 65px;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .nav-links {
+                gap: 15px;
+
+                font-size: 13px;
+            }
+
+            .nav-links a:nth-child(2) {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0 75px;
+            }
 
             .hero-text h1 {
-                font-size: 58px;
+                font-size: 52px;
 
                 letter-spacing: -3px;
             }
@@ -536,14 +824,42 @@
                 font-size: 17px;
             }
 
+            .phone-frame {
+                width: 285px;
+
+                padding: 9px;
+
+                border-radius: 38px;
+            }
+
+            .phone-screen {
+                border-radius: 29px;
+            }
+
+            .phone-screen::before {
+                width: 68px;
+
+                height: 18px;
+            }
+
             .gameplay-image {
-                max-width: 290px;
+                border-radius: 29px;
             }
 
             section {
-                padding:
-                    80px 20px;
+                padding: 75px 0;
             }
+
+            .support-box {
+                padding: 30px 22px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
         }
 
     </style>
@@ -553,320 +869,525 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =========================================================
          HEADER
-    ========================= -->
+    ========================================================= -->
 
     <header>
 
-        <nav class="nav">
+        <div class="container nav">
 
-            <div class="logo">
-                SORTIVO
-            </div>
+            <a href="#" class="logo">
+                SORTI<span>V</span>O
+            </a>
 
-            <ul class="nav-links">
+            <nav class="nav-links">
 
-                <li>
-                    <a href="#how-to-play">
-                        How to Play
-                    </a>
-                </li>
+                <a href="#how-to-play">
+                    How to Play
+                </a>
 
-                <li>
-                    <a href="#features">
-                        Features
-                    </a>
-                </li>
+                <a href="#features">
+                    Features
+                </a>
 
-                <li>
-                    <a href="#support">
-                        Support
-                    </a>
-                </li>
+                <a href="#support">
+                    Support
+                </a>
 
-            </ul>
+            </nav>
 
-        </nav>
+        </div>
 
     </header>
 
 
-    <!-- =========================
+
+    <!-- =========================================================
          HERO
-    ========================= -->
+    ========================================================= -->
 
-    <section class="hero">
+    <main>
 
-        <div class="hero-container">
+        <section class="hero">
 
-
-            <div class="hero-text">
-
-                <h1>
-                    Sort.<br>
-                    Match.<br>
-                    <span>Win.</span>
-                </h1>
+            <div class="container hero-container">
 
 
-                <p>
-                    Sortivo is a fun and addictive sorting puzzle game.
-                    Think fast, sort smart, and master every level.
-                </p>
+                <div class="hero-text">
+
+                    <div class="eyebrow">
+                        SORT. MATCH. WIN.
+                    </div>
+
+                    <h1>
+                        Sort smart.<br>
+                        <span>Win big.</span>
+                    </h1>
+
+                    <p>
+                        Sortivo is a fun and addictive sorting puzzle game.
+                        Sort the boxes, match the colors, and master every level.
+                    </p>
 
 
-                <a
-                    class="play-button"
-                    href="#"
-                >
-                    ▶ &nbsp; Play on Google Play
+                    <div class="hero-buttons">
+
+                        <!-- Google Play link will be added here later -->
+                        <a
+                            href="#"
+                            class="play-button"
+                        >
+                            ▶&nbsp; Play on Google Play
+                        </a>
+
+                        <a
+                            href="#how-to-play"
+                            class="secondary-button"
+                        >
+                            How to Play
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PHONE
+                ================================================= -->
+
+                <div class="game-preview">
+
+                    <div class="phone-frame">
+
+                        <div class="phone-screen">
+
+                            <img
+                                class="gameplay-image"
+                                src="SORTIVO_PlayStore_10inch_Gameplay_02_1440x2560.png"
+                                alt="Sortivo gameplay"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             HOW TO PLAY
+        ===================================================== -->
+
+        <section id="how-to-play">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>
+                        HOW IT WORKS
+                    </small>
+
+                    <h2>
+                        Easy to learn.
+                        Hard to master.
+                    </h2>
+
+                    <p>
+                        Sort the incoming boxes and send each one
+                        to the correct color station.
+                    </p>
+
+                </div>
+
+
+                <div class="steps">
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <h3>
+                            Watch the Boxes
+                        </h3>
+
+                        <p>
+                            Keep an eye on the conveyor and
+                            identify each incoming box.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <h3>
+                            Sort Them
+                        </h3>
+
+                        <p>
+                            Move every box toward the correct
+                            color station.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <h3>
+                            Master the Level
+                        </h3>
+
+                        <p>
+                            Keep sorting accurately and complete
+                            the level objectives.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FEATURES
+        ===================================================== -->
+
+        <section id="features">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>
+                        FEATURES
+                    </small>
+
+                    <h2>
+                        Why play Sortivo?
+                    </h2>
+
+                    <p>
+                        Simple controls, satisfying sorting,
+                        and challenging levels.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🎯
+                        </div>
+
+                        <h3>
+                            Simple Controls
+                        </h3>
+
+                        <p>
+                            Easy-to-understand gameplay designed
+                            for quick and comfortable mobile play.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🧩
+                        </div>
+
+                        <h3>
+                            Addictive Puzzles
+                        </h3>
+
+                        <p>
+                            Every level brings new sorting challenges
+                            that keep you thinking.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Master Every Level
+                        </h3>
+
+                        <p>
+                            Improve your score, complete objectives,
+                            and become a sorting master.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            📦
+                        </div>
+
+                        <h3>
+                            Colorful World
+                        </h3>
+
+                        <p>
+                            A bright factory world filled with colorful
+                            boxes and machines.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Fast-Paced Gameplay
+                        </h3>
+
+                        <p>
+                            Stay focused as the conveyor keeps
+                            moving and the pressure increases.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🎮
+                        </div>
+
+                        <h3>
+                            Made for Mobile
+                        </h3>
+
+                        <p>
+                            Designed from the ground up for
+                            comfortable mobile gameplay.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             GAMEPLAY
+        ===================================================== -->
+
+        <section id="gameplay">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>
+                        GAMEPLAY
+                    </small>
+
+                    <h2>
+                        See Sortivo in action.
+                    </h2>
+
+                    <p>
+                        Jump into the factory and start sorting.
+                    </p>
+
+                </div>
+
+
+                <div class="screenshots">
+
+                    <img
+                        src="SORTIVO_PlayStore_10inch_Gameplay_02_1440x2560.png"
+                        alt="Sortivo gameplay screenshot"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CTA
+        ===================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="cta">
+
+                    <h2>
+                        Ready to Sortivo?
+                    </h2>
+
+                    <p>
+                        Sort the boxes. Match the colors.
+                        Complete the challenge.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="play-button"
+                    >
+                        ▶&nbsp; Play on Google Play
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SUPPORT
+        ===================================================== -->
+
+        <section id="support">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>
+                        SUPPORT
+                    </small>
+
+                    <h2>
+                        Need help?
+                    </h2>
+
+                </div>
+
+
+                <div class="support-box">
+
+                    <h2>
+                        Sortivo Support
+                    </h2>
+
+                    <p>
+                        If you have a question, found a problem,
+                        or want to send us feedback, contact us.
+                    </p>
+
+                    <a
+                        href="mailto:support@sortivo.com"
+                        class="support-email"
+                    >
+                        support@sortivo.com
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+
+            <div class="footer-logo">
+                SORTIVO
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#support">
+                    Support
                 </a>
 
             </div>
 
 
-            <div class="game-preview">
+            <div class="copyright">
 
-                <img
-                    class="gameplay-image"
-                    src="SORTIVO_PlayStore_10inch_Gameplay_02_1440x2560.png"
-                    alt="Sortivo gameplay"
-                >
+                © 2026 Sortivo. All rights reserved.
 
             </div>
 
 
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FEATURES
-    ========================= -->
-
-    <section
-        class="features"
-        id="features"
-    >
-
-        <div class="section-container">
-
-
-            <h2 class="section-title">
-                Why Sortivo?
-            </h2>
-
-
-            <p class="section-subtitle">
-                Simple to learn, satisfying to play,
-                and challenging enough to keep you coming back.
-            </p>
-
-
-            <div class="feature-grid">
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        🧠
-                    </div>
-
-                    <h3>
-                        Think Fast
-                    </h3>
-
-                    <p>
-                        Make quick decisions and keep everything moving.
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        🎯
-                    </div>
-
-                    <h3>
-                        Sort Smart
-                    </h3>
-
-                    <p>
-                        Match every box with the correct destination.
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        🏆
-                    </div>
-
-                    <h3>
-                        Master Levels
-                    </h3>
-
-                    <p>
-                        Complete challenging levels and improve your skills.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         HOW TO PLAY
-    ========================= -->
-
-    <section id="how-to-play">
-
-        <div class="section-container">
-
-
-            <h2 class="section-title">
-                How to Play
-            </h2>
-
-
-            <p class="section-subtitle">
-                Getting started is easy.
-            </p>
-
-
-            <div class="steps">
-
-
-                <div class="step">
-
-                    <div class="step-number">
-                        1
-                    </div>
-
-                    <h3>
-                        Watch
-                    </h3>
-
-                    <p>
-                        Watch the boxes arrive on the conveyor.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">
-                        2
-                    </div>
-
-                    <h3>
-                        Sort
-                    </h3>
-
-                    <p>
-                        Send each box to the matching color.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">
-                        3
-                    </div>
-
-                    <h3>
-                        Win
-                    </h3>
-
-                    <p>
-                        Complete your goal and beat the level.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================= -->
-
-    <section
-        class="cta"
-        id="support"
-    >
-
-        <div class="section-container">
-
-            <h2>
-                Ready to Sort?
-            </h2>
-
-            <p>
-                Download Sortivo and start playing today.
-            </p>
-
-            <a
-                class="cta-button"
-                href="#"
-            >
-                Play Sortivo
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <div class="footer-logo">
-            SORTIVO
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#">
-                Privacy Policy
-            </a>
-
-            <a href="#">
-                Terms of Service
-            </a>
-
-            <a href="#support">
-                Support
-            </a>
-
-        </div>
-
-
-        <div class="copyright">
-            © 2026 Sortivo. All rights reserved.
         </div>
 
     </footer>
