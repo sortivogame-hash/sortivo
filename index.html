@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sortivo - Sort. Match. Win.</title>
+    <meta name="description" content="Sortivo is a fun and addictive sorting puzzle game. Sort, match and complete challenging levels.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #2636d9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5568;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2636d9;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 24px 80px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(98, 110, 255, 0.20), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 193, 74, 0.20), transparent 28%),
+                #f7f9fc;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h1 span {
+            color: #2636d9;
+        }
+
+        .hero-text p {
+            max-width: 520px;
+            font-size: 20px;
+            color: #667085;
+            margin-bottom: 35px;
+        }
+
+        .play-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 25px;
+            border-radius: 14px;
+            background: #172033;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 12px 25px rgba(23, 32, 51, 0.18);
+            transition: 0.25s;
+        }
+
+        .play-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(23, 32, 51, 0.25);
+        }
+
+        /* GAME VISUAL */
+
+        .game-preview {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone {
+            width: 260px;
+            height: 500px;
+            border-radius: 38px;
+            background: #172033;
+            padding: 10px;
+            box-shadow: 0 30px 70px rgba(23, 32, 51, 0.25);
+            transform: rotate(3deg);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            background: linear-gradient(180deg, #eef2ff, #ffffff);
+            padding: 35px 18px;
+            overflow: hidden;
+        }
+
+        .game-title {
+            text-align: center;
+            font-size: 23px;
+            font-weight: 900;
+            color: #2636d9;
+            margin-bottom: 30px;
+        }
+
+        .conveyor {
+            height: 100px;
+            margin-top: 80px;
+            border-radius: 18px;
+            background: #d8dde8;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 12px;
+        }
+
+        .box {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+        }
+
+        .red {
+            background: #ff5268;
+        }
+
+        .blue {
+            background: #5367ff;
+        }
+
+        .yellow {
+            background: #ffc94f;
+        }
+
+        .green {
+            background: #42c982;
+        }
+
+        .doors {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .door {
+            width: 45px;
+            height: 65px;
+            border-radius: 12px 12px 7px 7px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #667085;
+            max-width: 600px;
+            margin: 0 auto 55px;
+        }
+
+        .features {
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            padding: 35px 28px;
+            border-radius: 22px;
+            background: #f7f9fc;
+            text-align: center;
+            border: 1px solid #e9edf5;
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .feature-card p {
+            color: #667085;
+        }
+
+        /* HOW TO PLAY */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #2636d9;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #667085;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: #2636d9;
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            opacity: 0.85;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 13px;
+            background: white;
+            color: #2636d9;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: #aeb6c5;
+            padding: 45px 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #aeb6c5;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .copyright {
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .game-preview {
+                min-height: 430px;
+            }
+
+            .phone {
+                width: 220px;
+                height: 425px;
+            }
+
+            .feature-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav">
+            <div class="logo">SORTIVO</div>
+
+            <ul class="nav-links">
+                <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="hero-container">
+
+            <div class="hero-text">
+                <h1>
+                    Sort.<br>
+                    Match.<br>
+                    <span>Win.</span>
+                </h1>
+
+                <p>
+                    Sortivo is a fun and addictive sorting puzzle game.
+                    Think fast, sort smart, and master every level.
+                </p>
+
+                <a class="play-button" href="#">
+                    ▶ &nbsp; Play on Google Play
+                </a>
+            </div>
+
+
+            <div class="game-preview">
+
+                <div class="phone">
+
+                    <div class="phone-screen">
+
+                        <div class="game-title">
+                            SORTIVO
+                        </div>
+
+                        <div class="conveyor">
+                            <div class="box red"></div>
+                            <div class="box blue"></div>
+                            <div class="box yellow"></div>
+                            <div class="box green"></div>
+                        </div>
+
+                        <div class="doors">
+                            <div class="door red"></div>
+                            <div class="door blue"></div>
+                            <div class="door yellow"></div>
+                            <div class="door green"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features" id="features">
+
+        <div class="section-container">
+
+            <h2 class="section-title">
+                Why Sortivo?
+            </h2>
+
+            <p class="section-subtitle">
+                Simple to learn, satisfying to play, and challenging enough
+                to keep you coming back.
+            </p>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Think Fast</h3>
+                    <p>
+                        Make quick decisions and keep everything moving.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Sort Smart</h3>
+                    <p>
+                        Match every box with the correct destination.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Master Levels</h3>
+                    <p>
+                        Complete challenging levels and improve your skills.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW TO PLAY -->
+
+    <section id="how-to-play">
+
+        <div class="section-container">
+
+            <h2 class="section-title">
+                How to Play
+            </h2>
+
+            <p class="section-subtitle">
+                Getting started is easy.
+            </p>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Watch</h3>
+                    <p>
+                        Watch the boxes arrive on the conveyor.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Sort</h3>
+                    <p>
+                        Send each box to the matching color.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Win</h3>
+                    <p>
+                        Complete your goal and beat the level.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta" id="support">
+
+        <div class="section-container">
+
+            <h2>Ready to Sort?</h2>
+
+            <p>
+                Download Sortivo and start playing today.
+            </p>
+
+            <a class="cta-button" href="#">
+                Play Sortivo
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            SORTIVO
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#support">Support</a>
+        </div>
+
+        <div class="copyright">
+            © 2026 Sortivo. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
